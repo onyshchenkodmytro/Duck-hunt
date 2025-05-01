@@ -37,9 +37,30 @@ jobs:
 
       - name: Lint with flake8
         run: |
-          # stop the build if there are Python syntax errors or undefined names
           flake8 game tests
 
       - name: Run tests with pytest
         run: |
           pytest -q --disable-warnings --maxfail=1
+
+      - name: Generate Flake8 HTML Report
+        run: |
+          mkdir -p flake8-report
+          flake8 game tests --format=html --htmldir=flake8-report
+
+      - name: Generate Pytest HTML Report
+        run: |
+          mkdir -p pytest-report
+          pytest --html=pytest-report/report.html
+
+      - name: Upload Lint Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: flake8-report
+          path: flake8-report
+
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-report
+          path: pytest-report
