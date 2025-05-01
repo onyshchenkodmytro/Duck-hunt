@@ -1,6 +1,7 @@
 import pygame
 from PIL import Image
 
+
 class Explosion:
     def __init__(self, position):
         self.frames = []

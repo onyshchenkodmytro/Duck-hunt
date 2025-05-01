@@ -1,0 +1,12 @@
+[flake8]
+max-line-length = 101
+ignore = E203, E266, W503
+exclude =
+    .git,
+    __pycache__,
+    venv,
+    assets,
+    tests
+
+# Перевірка цикломатичної складності
+max-complexity = 15

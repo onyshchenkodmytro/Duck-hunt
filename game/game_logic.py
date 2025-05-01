@@ -1,5 +1,4 @@
 import pygame
-import random
 import json
 import os
 from game.duck import Duck
@@ -7,6 +6,7 @@ from game.player import Player
 from game.timer import Timer
 from game.ui import UIManager
 from game.explosion import Explosion
+
 
 class Game:
     def __init__(self, difficulty='easy'):
@@ -65,8 +65,8 @@ class Game:
             # Перевірка умови завершення раунду
             if self.timer.is_time_up() or self.player.bullets == 0 or \
                 (self.difficulty == 'easy' and len(self.ducks) == 0) or \
-                (self.difficulty == 'hard' and len(self.ducks) == 0 and self.player.bullets < 3):
-                
+                    (self.difficulty == 'hard' and len(self.ducks) == 0 and self.player.bullets < 3):
+
                 missed = len(self.ducks)
                 self.player.lose_life(missed)
                 self.ducks = []
@@ -127,11 +127,10 @@ class Game:
 
         self.screen.blit(small_font.render("Top 5 Scores:", True, (255, 255, 0)), (300, 220))
         for i, entry in enumerate(scores):
-            s = f"{i+1}. {entry['score']} pts ({entry['difficulty']})"
+            s = f"{i + 1}. {entry['score']} pts ({entry['difficulty']})"
             self.screen.blit(small_font.render(s, True, (255, 255, 255)), (300, 250 + i * 30))
 
         pygame.display.flip()
-
 
         waiting = True
         while waiting:

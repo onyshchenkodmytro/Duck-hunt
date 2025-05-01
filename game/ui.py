@@ -1,5 +1,6 @@
 import pygame
 
+
 class UIManager:
     def __init__(self, player, timer):
         self.player = player

@@ -1,6 +1,7 @@
 import pygame
 import random
 
+
 class Duck:
     def __init__(self, speed):
         self.image = pygame.image.load("assets/duck.png").convert_alpha()
