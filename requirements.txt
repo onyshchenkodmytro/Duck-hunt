@@ -1,2 +1,7 @@
+# Runtime dependencies
 pygame
 Pillow
+
+# Testing and CI dependencies
+pytest
+flake8
